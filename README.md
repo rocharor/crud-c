@@ -1,0 +1,2 @@
+- Link - https://medium.com/@gussmonteiro/criando-projetos-c-no-linux-usando-o-nosso-querido-visual-studio-code-junto-com-o-net-core-18b4ae24ac1d
+- Iniciar server - dotnet watch run
