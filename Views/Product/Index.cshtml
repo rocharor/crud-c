@@ -1,0 +1,76 @@
+﻿<div class="form">
+    <form action="#" method="post">
+        <br>
+        <div class="form-group">
+            <input class="form-control" type="text" name='product' placeholder="Produto">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Salvar" class="btn btn-success" >
+        </div>
+    </form>
+
+    <table class='table table-striped'>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th colspan=2 align=center>Ações</th>
+        </tr>
+        @foreach (var product in @ViewBag.products) {
+            <tr>
+                <td >
+                    <span>@product[0]</span>
+                </td>
+                <td width='100%'>
+                    <span>@product[1]</span>
+                    <br>
+                    <input type="text" class='d-none' id='input-@product[0]'>
+                </td>
+                <td>
+                    <button class='btn btn-success d-none' id='save-@product[0]' onClick="save(@product[0])">Salvar</button>
+                    <button class='btn btn-primary' id='edit-@product[0]' onClick="edit(@product[0])">Editar</button>
+                </td>
+                <td>
+                    <button class='btn btn-danger d-none' id='cancel-@product[0]' onClick="cancel(@product[0])">Cancelar</button>
+                    <button class='btn btn-danger' id='delete-@product[0]' onClick="del(@product[0])">Deletar</button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+
+</style>
+<script>
+    function edit(id) {
+        $('#save-'+id).removeClass('d-none');
+        $('#input-'+id).removeClass('d-none');
+        $('#cancel-'+id).removeClass('d-none');
+
+        $('#edit-'+id).addClass('d-none');
+        $('#delete-'+id).addClass('d-none');
+    }
+
+    function del(id) {
+
+    }
+
+    function save(id) {
+        var value = $('#input-'+id).val();
+        console.log(value);
+    }
+
+    function cancel(id) {
+        $('#save-'+id).addClass('d-none');
+        $('#input-'+id).addClass('d-none');
+        $('#cancel-'+id).addClass('d-none');
+
+        $('#edit-'+id).removeClass('d-none');
+        $('#delete-'+id).removeClass('d-none');
+
+        $('#input-'+id).val('');
+    }
+
+
+</script>
